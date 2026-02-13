@@ -25,8 +25,9 @@
 
 ## Phase 1 – Shell App Foundation 🏗️
 
-- [ ] Basic layout (`MainLayout.vue`)
-- [ ] Sidebar + header + slot content
+- [x] Basic layout (`MainLayout.vue` → `components/templates`)
+- [x] Sidebar + header + slot content (Atomic Design: atoms, organisms, templates)
+- [x] Path alias `@micro-saas-app` + barrel exports (config, components)
 - [x] Router skeleton oluştur (`router/index.ts`, `HomeView.vue`)
 - [x] Pinia store setup (root) (`stores/index.ts` – `useAppStore`)
 - [ ] Auth guard basic
