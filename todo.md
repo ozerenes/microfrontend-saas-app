@@ -2,12 +2,16 @@
 
 **Setup branch:** `chore/workspace-setup` (tüm setup commit’leri bu branch’te)
 
+**Durum:** Phase 0 tamamlandı. Sıradaki: Phase 1 – Shell App Foundation.
+
+---
+
 ## Phase 0 – Workspace Setup ✅
 
 > **Mevcut durum:** Workspace adı `microfrontend-saas-app`, ana uygulama da `microfrontend-saas-app`. Roadmap’teki `shell` / `microfrontend-saas-admin` isimleri ileride yeniden adlandırma veya yeni shell app eklenerek uyarlanabilir.
 
-- [x] Nx workspace oluştur (`microfrontend-saas-app` – admin yerine mevcut isim)
-- [ ] Application name → `shell` (şu an: `microfrontend-saas-app`)
+- [x] Nx workspace oluştur (`microfrontend-saas-app`)
+- [ ] Application name → `shell` (opsiyonel; şu an: `microfrontend-saas-app`)
 - [x] Framework → `Vue`
 - [x] Bundler → `Vite`
 - [x] Unit test runner → `Vitest`
@@ -23,8 +27,8 @@
 
 - [ ] Basic layout (`MainLayout.vue`)
 - [ ] Sidebar + header + slot content
-- [ ] Router skeleton oluştur
-- [ ] Pinia store setup (root)
+- [x] Router skeleton oluştur (`router/index.ts`, `HomeView.vue`)
+- [x] Pinia store setup (root) (`stores/index.ts` – `useAppStore`)
 - [ ] Auth guard basic
 - [ ] Nx lint & test çalıştır
 
