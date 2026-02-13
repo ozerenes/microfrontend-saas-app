@@ -1,0 +1,10 @@
+{
+  "name": "@microfrontend-saas-app/microfrontend-saas-app-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@microfrontend-saas-app/microfrontend-saas-app"
+    ]
+  }
+}

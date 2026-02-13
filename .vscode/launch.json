@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Vue: Chrome",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/apps/microfrontend-saas-app/src"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E: Playwright",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "e2e", "microfrontend-saas-app-e2e"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ],
+  "compounds": []
+}

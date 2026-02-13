@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev",
+      "type": "shell",
+      "command": "npx nx serve microfrontend-saas-app",
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "npx nx build microfrontend-saas-app",
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "npx nx test microfrontend-saas-app",
+      "group": "test"
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "npx nx lint microfrontend-saas-app",
+      "group": "none"
+    },
+    {
+      "label": "e2e",
+      "type": "shell",
+      "command": "npx nx e2e microfrontend-saas-app-e2e",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "new" }
+    }
+  ]
+}
