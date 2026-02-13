@@ -1,10 +1,19 @@
 /// <reference types='vitest' />
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/apps/microfrontend-saas-app',
+  resolve: {
+    alias: {
+      '@micro-saas-app': path.resolve(__dirname, 'src'),
+    },
+  },
   server: {
     port: 4200,
     host: 'localhost',
