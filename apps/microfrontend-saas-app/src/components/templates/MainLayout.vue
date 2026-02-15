@@ -14,7 +14,10 @@ const drawerVisible = ref(false);
   <div class="main-layout">
     <!-- Mobile: header with logo + hamburger -->
     <header class="main-layout__header">
-      <RouterLink to="/" class="main-layout__logo-link">
+      <RouterLink
+        to="/"
+        class="main-layout__logo-link"
+      >
         <LogoIcon class="main-layout__logo" />
         <span class="main-layout__title">SaaS App</span>
       </RouterLink>

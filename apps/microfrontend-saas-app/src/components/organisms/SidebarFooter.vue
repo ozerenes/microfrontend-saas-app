@@ -13,9 +13,16 @@ defineProps<{
       class="sidebar-footer__settings"
       @click="onClose?.()"
     >
-      <i class="pi pi-cog" aria-hidden="true" />
+      <i
+        class="pi pi-cog"
+        aria-hidden="true"
+      />
     </RouterLink>
-    <button type="button" class="sidebar-footer__user" @click="onClose?.()">
+    <button
+      type="button"
+      class="sidebar-footer__user"
+      @click="onClose?.()"
+    >
       <Avatar
         image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
         shape="circle"

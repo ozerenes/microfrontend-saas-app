@@ -10,7 +10,11 @@ defineProps<{
 <template>
   <div class="sidebar-header">
     <div class="sidebar-header__top">
-      <RouterLink to="/" class="sidebar-header__brand" @click="onClose?.()">
+      <RouterLink
+        to="/"
+        class="sidebar-header__brand"
+        @click="onClose?.()"
+      >
         <LogoIcon class="sidebar-header__logo" />
       </RouterLink>
       <Button
