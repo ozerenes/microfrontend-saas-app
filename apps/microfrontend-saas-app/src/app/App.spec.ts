@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { createRouter, createWebHistory } from 'vue-router';
 import { createPinia } from 'pinia';
-import App from '@micro-saas-app/App.vue';
+import App from '@micro-saas-app/app/App.vue';
 import HomeView from '@micro-saas-app/views/HomeView.vue';
 
 const router = createRouter({

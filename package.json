@@ -10,6 +10,8 @@
     "test": "nx test microfrontend-saas-app",
     "test:ci": "nx run microfrontend-saas-app:test-ci",
     "lint": "nx lint microfrontend-saas-app",
+    "lint:fix": "nx run microfrontend-saas-app:lint --fix",
+    "format": "prettier --write .",
     "e2e": "nx e2e microfrontend-saas-app-e2e"
   },
   "private": true,

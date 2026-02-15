@@ -7,9 +7,12 @@ const searchQuery = ref('');
 
 <template>
   <header class="content-header">
-    <div></div>
+    <div />
     <div class="content-header__right">
-      <IconField icon-position="left" class="content-header__search-wrap">
+      <IconField
+        icon-position="left"
+        class="content-header__search-wrap"
+      >
         <InputIcon>
           <i class="pi pi-search" />
         </InputIcon>
@@ -29,7 +32,10 @@ const searchQuery = ref('');
         aria-label="Bildirimler"
       >
         <i class="pi pi-bell" />
-        <span class="content-header__notify-dot" aria-hidden="true" />
+        <span
+          class="content-header__notify-dot"
+          aria-hidden="true"
+        />
       </Button>
     </div>
   </header>
