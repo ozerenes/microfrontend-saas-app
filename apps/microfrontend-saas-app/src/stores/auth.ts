@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', {
       if (token) localStorage.setItem(AUTH_KEY, token);
       else localStorage.removeItem(AUTH_KEY);
     },
-    setUser(user: typeof useAuthStore.prototype.user) {
+    setUser(user: { id: string; email?: string } | null) {
       this.user = user;
     },
     logout() {
