@@ -1,13 +1,36 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getActivePinia } from 'pinia';
+import { useRouter } from 'vue-router';
 import {
   AppSidebar,
   ContentHeader,
   LogoIcon,
 } from '@micro-saas-app/components';
 import { Button } from 'primevue';
+import { providePluginContext } from '@micro-saas-app/core/pluginEngine';
 
 const drawerVisible = ref(false);
+/** Optional plugin slot: remotes can mount header UI here via PluginContext.slots.header */
+const headerPluginSlot = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  const app = getCurrentInstance()?.appContext.app;
+  const router = useRouter();
+  const pinia = getActivePinia();
+  if (app && router && pinia) {
+    providePluginContext({
+      app,
+      router,
+      pinia,
+      slots: { header: headerPluginSlot.value ?? undefined },
+    });
+  }
+});
+
+defineExpose({
+  headerPluginSlot,
+});
 </script>
 
 <template>
@@ -21,6 +44,10 @@ const drawerVisible = ref(false);
         <LogoIcon class="main-layout__logo" />
         <span class="main-layout__title">SaaS App</span>
       </RouterLink>
+      <div
+        ref="headerPluginSlot"
+        class="layout__header-plugin-slot"
+      />
       <Button
         type="button"
         icon="pi pi-bars"
@@ -58,10 +85,19 @@ const drawerVisible = ref(false);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   padding: 0 1rem;
   min-height: 3.5rem;
   border-bottom: 1px solid var(--p-surface-200, #e5e7eb);
   background: var(--p-surface-0, #fff);
+}
+
+.layout__header-plugin-slot {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .main-layout__logo-link {
