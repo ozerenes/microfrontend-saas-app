@@ -2,7 +2,8 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { Drawer } from 'primevue';
-import { navItems, type NavItemRoute } from '@micro-saas-app/config';
+import { useMergedNavItems } from '@micro-saas-app/composables/useMergedNavItems';
+import type { NavItemRoute } from '@micro-saas-app/config';
 import { SidebarHeader, SidebarFooter } from '@micro-saas-app/components';
 
 const { drawerVisible = false } = defineProps<{
@@ -19,6 +20,7 @@ const drawerVisibleComputed = computed({
 });
 
 const route = useRoute();
+const { items: navItems } = useMergedNavItems();
 
 function isActive(itemRoute: NavItemRoute) {
   if (itemRoute.name && route.name) return route.name === itemRoute.name;
