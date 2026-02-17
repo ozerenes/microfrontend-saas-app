@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "remotes": {
+    "users": {
+      "entry": "https://cdn.example.com/users/1.0.0/remoteEntry.js",
+      "version": "1.0.0"
+    }
+  }
+}
