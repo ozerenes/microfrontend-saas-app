@@ -6,6 +6,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: null as string | null,
     user: null as { id: string; email?: string } | null,
+    ready: false,
   }),
   getters: {
     isAuthenticated: (s) => !!s.token,
@@ -24,9 +25,10 @@ export const useAuthStore = defineStore('auth', {
       this.user = null;
       localStorage.removeItem(AUTH_KEY);
     },
-    hydrateFromStorage() {
+    hydrateFromStorage(): void {
       const t = localStorage.getItem(AUTH_KEY);
       if (t) this.token = t;
+      this.ready = true;
     },
   },
 });

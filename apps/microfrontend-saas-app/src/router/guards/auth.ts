@@ -1,14 +1,16 @@
-import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
+import type { RouteLocationNormalized } from 'vue-router';
 import { useAuthStore } from '@micro-saas-app/stores/auth';
 
-export function authGuard(
-  to: RouteLocationNormalized,
-  _from: RouteLocationNormalized,
-  next: NavigationGuardNext
-) {
-  const publicRoute = to.meta.public === true;
-  if (publicRoute || to.name === 'login') return next();
+/**
+ * Auth guard: return-based (no next()). Ensures auth is hydrated before checking.
+ * Public routes and login pass; otherwise redirect to login if not authenticated.
+ */
+export function authGuard(to: RouteLocationNormalized): boolean | { name: string } {
   const auth = useAuthStore();
-  if (auth.isAuthenticated) return next();
-  next({ name: 'login' });
+  if (!auth.ready) {
+    auth.hydrateFromStorage();
+  }
+  if (to.meta.public === true || to.name === 'login') return true;
+  if (!auth.isAuthenticated) return { name: 'login' };
+  return true;
 }

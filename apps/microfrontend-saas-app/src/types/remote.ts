@@ -1,32 +1,24 @@
 import type { RouteRecordRaw } from 'vue-router';
+import type { Plugin } from './plugin';
 
 /**
- * Remote contract: Layout shell'de kalır, remote'lar sadece view export eder.
- *
- * - Shell: Tüm sayfa layout'u (sidebar, header, content alanı) shell'de tanımlıdır.
- * - Remote: Sadece route'a karşılık gelen view (içerik) component'ini export eder.
- *   Remote kendi layout'u (wrapper, sidebar, header) export etmez; sayfa layout'u shell'de kalır.
- *
- * Route'taki `component` alanı sadece sayfa içeriği (view) olmalı; layout component kullanılmaz.
- */
-
-/**
- * Remote'dan beklenen route: path, name, component (sadece view — layout değil).
- * Vue Router'un RouteRecordRaw'ı kullanılır; tek kısıt: component = view-only.
+ * Remote contract: Layout stays in shell; remotes export views only.
+ * Route `component` must be view-only (no layout).
  */
 export type RemoteViewRoute = RouteRecordRaw;
 
 /**
- * Remote modülünün shell'e export etmesi beklenen yapı.
- * routes: Sadece view component'leri içeren route tanımları (layout bilgisi yok).
+ * Remote module contract. Shell loads via dynamic import; may expose plugin and/or routes.
  */
 export interface RemoteModule {
-  /** Route'a karşılık gelen view component'leri; layout shell'de. */
-  routes: RemoteViewRoute[];
-  /** Opsiyonel: menü öğesi (label, icon, route) — shell sidebar'a ekler. */
+  /** Optional plugin (id, name, routes, menuItem, mount/unmount). */
+  plugin?: Plugin;
+  /** View-only route definitions; injected under main-layout. */
+  routes?: RemoteViewRoute[];
+  /** @deprecated Prefer plugin.menuItem. Kept for backward compatibility. */
   menuItem?: {
     label: string;
     icon?: string;
-    route: { name: string } | { path: string };
+    route: { name?: string; path?: string };
   };
 }
